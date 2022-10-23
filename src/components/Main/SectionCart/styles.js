@@ -123,9 +123,11 @@ export const SectionCartStyles = styled.section`
   .cart_info-wrap {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
   }
+
   .button-footer {
     display: flex;
     flex-direction: row;

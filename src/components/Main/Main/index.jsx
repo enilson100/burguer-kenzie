@@ -18,7 +18,7 @@ const Main = () => {
   }, []);
 
   const sumTotal = cart.reduce(
-    (acc, atual) => acc + parseFloat(atual.price),
+    (acc, atual) => acc + parseFloat(atual.price) * atual.quantity,
     0
   );
 

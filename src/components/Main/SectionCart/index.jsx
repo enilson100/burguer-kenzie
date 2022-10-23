@@ -21,7 +21,7 @@ const Cart = ({ cart, remove, total, removeAll }) => {
                         <p className="name-cart">{elem.name}</p>
                         <p className="category-cart">{elem.category}</p>
                       </div>
-                      <div>
+                      <div className="cart_info-wrap">
                         <p
                           className="button-remove"
                           onClick={() => remove(elem)}
@@ -41,7 +41,7 @@ const Cart = ({ cart, remove, total, removeAll }) => {
                 Total{" "}
                 <span className="span-cart">
                   R${" "}
-                  {total.toString().length > 5
+                  {total.toString().length > 3
                     ? total.toString().slice(0, 5)
                     : `${total.toString().slice(0, 5)},00`}
                 </span>
