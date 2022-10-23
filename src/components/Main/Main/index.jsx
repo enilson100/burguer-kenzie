@@ -9,7 +9,6 @@ const Main = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
-  /*  const [cartTotal, setCartTotal] = useState(0); */
 
   const [cart, setCart] = useState([]);
 
