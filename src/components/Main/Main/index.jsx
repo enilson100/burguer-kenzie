@@ -28,7 +28,10 @@ const Main = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const sumTotal = cart.reduce((acc, atual) => acc + parseInt(atual.price), 0);
+  const sumTotal = cart.reduce(
+    (acc, atual) => acc + parseFloat(atual.price),
+    0
+  );
 
   function removerAll() {
     setCurrentSale([]);

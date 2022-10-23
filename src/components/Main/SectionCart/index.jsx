@@ -36,7 +36,10 @@ const Cart = ({ cart, remove, total, removeAll }) => {
             <hr />
             <section className="footer-cart">
               <p className="total-cart">
-                Total <span className="span-cart">R$ {total},00</span>
+                Total{" "}
+                <span className="span-cart">
+                  R$ {total.toString().slice(0, 5)},00
+                </span>
               </p>
               <button className="button-footer" onClick={() => removeAll()}>
                 Remover todos
