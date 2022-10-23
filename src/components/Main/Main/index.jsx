@@ -8,18 +8,7 @@ import { MainStyles } from "./styles";
 const Main = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [currentSale, setCurrentSale] = useState([]);
-
   const [cart, setCart] = useState([]);
-
-  function removeDuplicatas() {
-    currentSale.forEach((elem) => {
-      if (!cart.includes(elem)) {
-        setCart([...cart, elem]);
-      }
-    });
-  }
-  removeDuplicatas();
 
   useEffect(() => {
     api
@@ -34,14 +23,10 @@ const Main = () => {
   );
 
   function removerAll() {
-    setCurrentSale([]);
     setCart([]);
   }
   function handleRemove(item) {
-    setCurrentSale(currentSale.filter((elem) => item !== elem.id));
     setCart(cart.filter((elem) => item !== elem.id));
-
-    removeDuplicatas();
   }
   function handleSearch(value) {
     setFilteredProducts(
@@ -52,11 +37,25 @@ const Main = () => {
       )
     );
   }
-  function addCart(elem) {
-    setCurrentSale([...currentSale, elem]);
-    removeDuplicatas();
-  }
+  const addCart = (elem) => {
+    const filtro = cart.findIndex((e) => e.name === elem.name);
+    if (filtro === -1) {
+      const product = {
+        id: elem.id,
+        img: elem.img,
+        name: elem.name,
+        category: elem.category,
+        price: elem.price,
+        quantity: 1,
+      };
 
+      setCart([...cart, product]);
+    } else {
+      cart[filtro].quantity = cart[filtro].quantity + 1;
+      setCart([...cart]);
+    }
+  };
+  console.log(cart);
   return (
     <>
       <Header handleSearch={handleSearch}></Header>
@@ -67,7 +66,6 @@ const Main = () => {
           addCart={addCart}
         ></Container>
         <Cart
-          currentSale={currentSale}
           cart={cart}
           remove={handleRemove}
           total={sumTotal}
