@@ -15,7 +15,9 @@ export const HeaderStyle = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 87%;
+    max-width: 1200px;
     gap: 5px;
   }
   figure {
