@@ -21,13 +21,15 @@ const Cart = ({ cart, remove, total, removeAll }) => {
                         <p className="name-cart">{elem.name}</p>
                         <p className="category-cart">{elem.category}</p>
                       </div>
-
-                      <p
-                        className="button-remove"
-                        onClick={() => remove(elem.id)}
-                      >
-                        Remover
-                      </p>
+                      <div>
+                        <p
+                          className="button-remove"
+                          onClick={() => remove(elem)}
+                        >
+                          Remover
+                        </p>
+                        <p>{elem.quantity}</p>
+                      </div>
                     </div>
                   </li>
                 );

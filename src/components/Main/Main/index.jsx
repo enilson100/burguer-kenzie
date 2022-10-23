@@ -26,7 +26,14 @@ const Main = () => {
     setCart([]);
   }
   function handleRemove(item) {
-    setCart(cart.filter((elem) => item !== elem.id));
+    const filtro = cart.findIndex((e) => e.name === item.name);
+    if (cart[filtro].quantity !== 1) {
+      cart[filtro].quantity = cart[filtro].quantity - 1;
+      setCart([...cart]);
+    } else {
+      const filtred = cart.filter((e) => e.name !== item.name);
+      setCart([...filtred]);
+    }
   }
   function handleSearch(value) {
     setFilteredProducts(
@@ -37,7 +44,7 @@ const Main = () => {
       )
     );
   }
-  const addCart = (elem) => {
+  function addCart(elem) {
     const filtro = cart.findIndex((e) => e.name === elem.name);
     if (filtro === -1) {
       const product = {
@@ -54,8 +61,10 @@ const Main = () => {
       cart[filtro].quantity = cart[filtro].quantity + 1;
       setCart([...cart]);
     }
-  };
+  }
+
   console.log(cart);
+
   return (
     <>
       <Header handleSearch={handleSearch}></Header>
